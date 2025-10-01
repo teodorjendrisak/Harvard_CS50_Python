@@ -12,18 +12,14 @@ def main():
         sys.exit("Not a csv file")
 
     try:
-        menu_items = []
-
         filename = sys.argv[1]
         with open(filename) as file:
             reader = csv.DictReader(file)
-            for row in reader:
-                menu_items.append({"pizza": row["Sicilian Pizza"], "small": row["Small"], "large": row["Large"]})
-                #Still need to change so also first line get's printed (check header option) and change the table style
+            menu_items = list(reader)
     except FileNotFoundError:
         sys.exit("File does not exist")
 
-    print(tabulate(menu_items))
+    print(tabulate(menu_items, headers="keys", tablefmt="grid"))
 
 
 if __name__ == "__main__":
