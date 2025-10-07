@@ -6,7 +6,7 @@ def main():
 
 
 def parse(s):
-    link = re.search(r'src="https?://(www\.)?youtube\.com/embed/(\w+)"', s)
+    link = re.search(r'src="https?://(www\.)?youtube\.com/embed/([\w-]+)"', s)
     if link:
         return (f"https://youtu.be/{link.group(2)}")
     else:
